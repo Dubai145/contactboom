@@ -28,12 +28,13 @@ class _secondpageState extends State<secondpage> {
             margin: EdgeInsets.all(20),
             child: TextField(
               controller: Name,
+              keyboardType: TextInputType.text,
               decoration: InputDecoration(
                   hintText: 'Contact Name',
                   labelText: 'Name',
                   errorText: ms ? 'Blank Your Name' : null,
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(50),
+                   // borderRadius: BorderRadius.circular(50),
                     borderSide: BorderSide(color: Colors.black, width: 3),
                   )),
             ),
@@ -42,13 +43,14 @@ class _secondpageState extends State<secondpage> {
             margin: EdgeInsets.all(20),
             child: TextField(
                 controller: Number,
+                keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                     hintText: 'Contact Number',
                     labelText: 'Number',
                     errorText: mk ? 'Blank Your Number' : null,
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(50),
-                      borderSide: BorderSide(color: Colors.black, width: 3),
+                     // borderRadius: BorderRadius.circular(50),
+                      borderSide: BorderSide(color: Colors.black, width: 3,),
                     ))),
           ),
           ElevatedButton(

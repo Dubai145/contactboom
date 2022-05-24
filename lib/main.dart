@@ -1,3 +1,4 @@
+import 'package:contactboom/second.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -24,6 +25,11 @@ class _firstState extends State<first> {
       ),
       floatingActionButton:
           FloatingActionButton(onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context)
+                {
+            return secondpage();
+                },
+            ));
 
           }, child: Icon(Icons.add)),
     );
