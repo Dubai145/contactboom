@@ -23,15 +23,15 @@ class _firstState extends State<first> {
         title: Text("Contact Book"),
         centerTitle: true,
       ),
-      floatingActionButton:
-          FloatingActionButton(onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context)
-                {
-            return secondpage();
-                },
+      floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(
+              builder: (context) {
+                return secondpage();
+              },
             ));
-
-          }, child: Icon(Icons.add)),
+          },
+          child: Icon(Icons.add)),
     );
   }
 }

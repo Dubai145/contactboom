@@ -1,24 +1,52 @@
+import 'package:contactboom/helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:sqflite/sqflite.dart';
 
 class secondpage extends StatefulWidget {
   const secondpage({Key? key}) : super(key: key);
 
+
+
   @override
   State<secondpage> createState() => _secondpageState();
+
+
 }
 
 class _secondpageState extends State<secondpage> {
+
+
   TextEditingController Name = TextEditingController();
   TextEditingController Number = TextEditingController();
 
+  Database? db;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getdatabase();
+  }
+
+  getdatabase()
+  {
+    helper().Getdatabase().then((value)  {
+
+      setState(() {
+        db = value;
+      });
+
+    } );
+    
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          'Editing page',
+          'Add Page',
           style: TextStyle(fontSize: 25),
         ),
       ),
@@ -32,7 +60,7 @@ class _secondpageState extends State<secondpage> {
               decoration: InputDecoration(
                   hintText: 'Contact Name',
                   labelText: 'Name',
-                  errorText: ms ? 'Blank Your Name' : null,
+                  errorText: ms ? 'Enter Your Name' : null,
                   border: OutlineInputBorder(
                    // borderRadius: BorderRadius.circular(50),
                     borderSide: BorderSide(color: Colors.black, width: 3),
@@ -47,7 +75,7 @@ class _secondpageState extends State<secondpage> {
                 decoration: InputDecoration(
                     hintText: 'Contact Number',
                     labelText: 'Number',
-                    errorText: mk ? 'Blank Your Number' : null,
+                    errorText: mk ? 'Enter Your Number' : null,
                     border: OutlineInputBorder(
                      // borderRadius: BorderRadius.circular(50),
                       borderSide: BorderSide(color: Colors.black, width: 3,),
@@ -57,6 +85,10 @@ class _secondpageState extends State<secondpage> {
             onPressed: () {
               String nName = Name.text;
               String nNumber = Number.text;
+
+
+              helper().insertdata(nName,nNumber,db!);
+
 
               setState(() {
                 if (nName.isEmpty) {
@@ -70,10 +102,10 @@ class _secondpageState extends State<secondpage> {
               });
             },
             child: Container(
-              height: 20,
-              width: 50,
+              height: 30,
+              width: 60,
               child: Center(
-                child: Text('Get'),
+                child: Text('Save'),
               ),
             ),
           ),
